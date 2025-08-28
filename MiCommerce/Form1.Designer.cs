@@ -69,8 +69,10 @@
             // 
             this.txbSenha.Location = new System.Drawing.Point(202, 113);
             this.txbSenha.Name = "txbSenha";
+            this.txbSenha.PasswordChar = '*';
             this.txbSenha.Size = new System.Drawing.Size(114, 20);
             this.txbSenha.TabIndex = 3;
+            this.txbSenha.UseSystemPasswordChar = true;
             // 
             // btnEntrada
             // 
@@ -81,6 +83,7 @@
             this.btnEntrada.TabIndex = 4;
             this.btnEntrada.Text = "Entrar";
             this.btnEntrada.UseVisualStyleBackColor = true;
+            this.btnEntrada.Click += new System.EventHandler(this.btnEntrada_Click);
             // 
             // lblTitulo
             // 
