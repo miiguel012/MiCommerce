@@ -49,7 +49,7 @@ namespace MiCommerce
                     usuario.NomeCompleto = resultado.Rows[0]["nome_completo"].ToString();
 
                     //mudar para o menu principal 
-                    MenuPrincipal menuPrincipal = new MenuPrincipal();
+                    MenuPrincipal menuPrincipal = new MenuPrincipal(usuario);
                     Hide(); //esconder a janela atual 
                     menuPrincipal.ShowDialog(); //mostrar o menuprincipal
 

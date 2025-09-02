@@ -12,9 +12,24 @@ namespace MiCommerce
 {
     public partial class MenuPrincipal : Form
     {
-        public MenuPrincipal()
+        //variaveis globais:
+        Model.Usuario Usuario = new Model.Usuario();
+        public MenuPrincipal(Model.Usuario usuario)
         {
             InitializeComponent();
+            this.Usuario = usuario;
+            lbldescrição.Text = $"Ola {usuario.NomeCompleto},\nEscolha uma opçao abaixo:";
+        }
+
+        private void btnComandas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            FormUsuarios formUsuarios = new FormUsuarios(Usuario);
+            formUsuarios.ShowDialog();//mostrar o form
         }
     }
 }

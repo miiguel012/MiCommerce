@@ -73,6 +73,16 @@ namespace MiCommerce.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap baker {
+            get {
+                object obj = ResourceManager.GetObject("baker", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap padaria {
             get {
                 object obj = ResourceManager.GetObject("padaria", resourceCulture);
