@@ -12,9 +12,11 @@ namespace MiCommerce
 {
     public partial class FormCaixa : Form
     {
-        public FormCaixa()
+        Model.Usuario Usuario;
+        public FormCaixa(Model.Usuario usuario)
         {
             InitializeComponent();
+            Usuario = usuario;
         }
     }
 }

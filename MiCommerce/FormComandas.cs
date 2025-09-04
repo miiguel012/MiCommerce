@@ -12,9 +12,11 @@ namespace MiCommerce
 {
     public partial class FormComandas : Form
     {
-        public FormComandas()
+        Model.Usuario usario;
+        public FormComandas(Model.Usuario usario)
         {
             InitializeComponent();
+            this.usario = usario;
         }
     }
 }

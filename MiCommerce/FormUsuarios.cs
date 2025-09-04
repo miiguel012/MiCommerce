@@ -20,8 +20,15 @@ namespace MiCommerce
             InitializeComponent();
             this.usuario = usuario;
             // Mostrar as informaçoes do bd no datagridfive
+            dgvUsuarios.DataSource = usuario;
+            Atualizardgv();
+        }
+        public void Atualizardgv()
+        {
+            // mostrar as informacoes 
             dgvUsuarios.DataSource = usuario.listar();
         }
+
 
         private void txbSenhaCadastro_TextChanged(object sender, EventArgs e)
         {
@@ -58,10 +65,17 @@ namespace MiCommerce
                 usuarioCadastro.Email = txbEmailCadastro.Text;
                 usuarioCadastro.Senha = txbSenhaCadastro.Text;
 
+                // Executar o insert
                 if (usuarioCadastro.cadastrar())
                 {
                     MessageBox.Show("usuario cadastrado com sucesso!", "show!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // atualizar o dgv:
+                    Atualizardgv();
 
+                    // apagar os campos de cadastros
+                    txbNomeCadastro.Clear();
+                    txbEmailCadastro.Clear();
+                    txbSenhaCadastro.Clear();
                 }
                 else
                 {
