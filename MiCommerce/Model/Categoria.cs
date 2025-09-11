@@ -26,5 +26,8 @@ namespace MiCommerce.Model
             conexaoBD.Desconectar(con);
             return tabela;
         }
+  
     }
+
+           
 }

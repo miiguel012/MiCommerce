@@ -160,7 +160,7 @@
             this.grbEditar.Enabled = false;
             this.grbEditar.Location = new System.Drawing.Point(29, 288);
             this.grbEditar.Name = "grbEditar";
-            this.grbEditar.Size = new System.Drawing.Size(236, 166);
+            this.grbEditar.Size = new System.Drawing.Size(236, 212);
             this.grbEditar.TabIndex = 2;
             this.grbEditar.TabStop = false;
             this.grbEditar.Text = "Editar";
@@ -168,21 +168,23 @@
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(22, 109);
+            this.btnEditar.Location = new System.Drawing.Point(41, 109);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(145, 36);
             this.btnEditar.TabIndex = 7;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(54, 155);
+            this.button1.Location = new System.Drawing.Point(32, 151);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(154, 46);
             this.button1.TabIndex = 6;
             this.button1.Text = "Cadastrar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txbSenhaEditar
             // 
@@ -263,6 +265,7 @@
             this.btnApagar.TabIndex = 0;
             this.btnApagar.Text = "Apagar";
             this.btnApagar.UseVisualStyleBackColor = true;
+            this.btnApagar.Click += new System.EventHandler(this.btnApagar_Click);
             // 
             // lblTitulo
             // 
@@ -322,7 +325,6 @@
         private System.Windows.Forms.Label lblSenhaCadastro;
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.GroupBox grbEditar;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txbSenhaEditar;
         private System.Windows.Forms.Label lblSenhaEditar;
         private System.Windows.Forms.TextBox txbEmailEditar;
@@ -335,5 +337,6 @@
         private System.Windows.Forms.Label lblDescricaoApagar;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.PictureBox pibIcone;
+        private System.Windows.Forms.Button button1;
     }
 }

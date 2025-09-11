@@ -9,13 +9,13 @@ using System.Windows.Forms;
 
 namespace MiCommerce.Model
 {
-     public class Usuario
-     {
+    public class Usuario
+    {
         public int Id { get; set; }
-        public string NomeCompleto{ get; set; }
+        public string NomeCompleto { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
-        
+
 
         /* Cadastrar 
          * logar
@@ -23,8 +23,8 @@ namespace MiCommerce.Model
          * remover 
          */
 
-        
-        
+
+
         public DataTable Logar()
         {
 
@@ -41,8 +41,8 @@ namespace MiCommerce.Model
             string senhahash = EasyEncryption.SHA.ComputeSHA256Hash(Senha);
 
             //substituir os carcteres coringas()
-            cmd.Parameters.AddWithValue("@email",Email);
-            cmd.Parameters.AddWithValue("@senha",senhahash);
+            cmd.Parameters.AddWithValue("@email", Email);
+            cmd.Parameters.AddWithValue("@senha", senhahash);
 
             cmd.Prepare();
 
@@ -54,24 +54,24 @@ namespace MiCommerce.Model
             return tabela;
 
             //tabela que vai receber o resultado do SELECT (logar)
-            
+
 
         }
         public DataTable listar()
         {
             string comando = "SELECT id, nome_completo, email FROM usuarios";
-           
+
             Banco conexaoBD = new Banco();
             MySqlConnection con = conexaoBD.ObterConexao();
             MySqlCommand cmd = new MySqlCommand(comando, con);
 
-               
-           
+
+
             cmd.Prepare();
 
-            
+
             DataTable tabela = new DataTable();
-          
+
             tabela.Load(cmd.ExecuteReader());
             conexaoBD.Desconectar(con);
             return tabela;
@@ -112,10 +112,70 @@ namespace MiCommerce.Model
                 conexaoBD.Desconectar(con);
                 return false;
             }
+
         }
+        public bool Apagar()
+        {
+            string comando = "DELETE FROM produtos WHERE id = @id";
+            Banco conexaoBD = new Banco();
+            MySqlConnection con = conexaoBD.ObterConexao();
+            MySqlCommand cmd = new MySqlCommand(comando, con);
+            cmd.Parameters.AddWithValue("@id", Id);
+            cmd.Prepare();
+            try
+            {
+                if (cmd.ExecuteNonQuery() == 0)
+                {
+                    conexaoBD.Desconectar(con);
+                    return false;
+                }
+                else
+                {
+                    conexaoBD.Desconectar(con);
+                    return true;
+                }
+            }
+            catch
+            {
+                conexaoBD.Desconectar(con);
+                return false;
+            }
 
-     }
+        }
+        public bool Modificar()
+        {
+            string comando = "UPDATE usuarios SET nome_completo = @nome_completo, " +
+                "email = @email, senha = @senha WHERE id = @id";
+            Banco conexaoBD = new Banco();
+            MySqlConnection con = conexaoBD.ObterConexao();
+            MySqlCommand cmd = new MySqlCommand(comando, con);
+            cmd.Parameters.AddWithValue("@nome_completo", NomeCompleto);
+            cmd.Parameters.AddWithValue("@email", Email);
 
-        
-    
+            string hashsenha = EasyEncryption.SHA.ComputeSHA256Hash(Senha);
+
+            cmd.Parameters.AddWithValue("@senha", hashsenha);
+            cmd.Parameters.AddWithValue("@id", Id);
+            cmd.Prepare();
+            try
+            {
+                if (cmd.ExecuteNonQuery() == 0)
+                {
+                    conexaoBD.Desconectar(con);
+                    return false;
+                }
+                else
+                {
+                    conexaoBD.Desconectar(con);
+                    return true;
+                }
+            }
+            catch
+            {
+                conexaoBD.Desconectar(con);
+                return false;
+            }
+
+        }
+    }
 }
